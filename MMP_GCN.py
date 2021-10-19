@@ -19,7 +19,7 @@ from sklearn.feature_selection import RFE
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-root_folder3 = "E:\\code-new\\population-gcn-master\\fmri-dti-291+guangxi\\"
+root_folder3 = "E:\\...\\"
 phenotype3 = os.path.join(root_folder3, 'Phenototal1.csv')
 class GraphConvolution1(Module):
 
@@ -174,7 +174,7 @@ def create_graph_from_phenotypic_information(scores, subject_list):
     return graph
 def feature_selection(matrix, labels, train_ind, fnum):
     estimator = RidgeClassifier()
-    selector = RFE(estimator, fnum, step=10, verbose=0)   # step 表示每次删除的特征个数
+    selector = RFE(estimator, fnum, step=10, verbose=0)   # 
     featureX = matrix[train_ind, :]
     featureY = labels[train_ind]
     selector = selector.fit(featureX, featureY.ravel())
@@ -202,7 +202,7 @@ def feature_selection_statistics(matrix, labels, train_ind, fnum):
     featureX2_std = np.std(featureX2, axis = 0)
     feature_std = 0.5 * featureX1_std + 0.5 * featureX2_std
     results = abs(featureX1_mean-featureX2_mean) / (0.1 + 2 * feature_std)
-    ranks = np.argsort(-results)  ### -results 表示降序
+    ranks = np.argsort(-results)  ### -results 
     ranks_top = ranks[0:fnum,]
     x_data = matrix[:,ranks_top]
     return x_data
@@ -231,7 +231,7 @@ def bulid_graph_shuangzhi(fea):
             if c[k]*c[s] == 0.:
                 adj[k][s] = 0.
             else:
-                adj[k][s] = np.dot(fea[k], fea[s])/c[k]*c[s] # 相似性矩阵s
+                adj[k][s] = np.dot(fea[k], fea[s])/c[k]*c[s] # 
     return adj  # MCI-graph
 def graph_pool(train_ind,final_graph1,num_retain,y1) :
 
@@ -252,8 +252,8 @@ def graph_pool(train_ind,final_graph1,num_retain,y1) :
     adj_class1 = adj_class1 / num1
     adj_class2 = adj_class2 / num2
     adj_class1_2 = abs(adj_class1 - adj_class2)
-    ranks = np.argsort(-adj_class1_2[:,0])  ### -results 表示降序， 返回索引
-    ranks_top = ranks[0:num_retain, ]  ### 保留前 rr 个索引
+    ranks = np.argsort(-adj_class1_2[:,0])  ### -results
+    ranks_top = ranks[0:num_retain, ]  ### 
     for i0 in range(0, len(y1)):
         if i0 not in ranks_top:
             final_graph1[:, i0] = 0
@@ -501,7 +501,7 @@ def _main():
         test_pred = []
         test_lab = []
         test_score_pred = []
-        data_folder_FC = "E:\\妮娜\\xuegangBrainNetwork-291\\new_sxg_wsr_dti\\NCSMC\\"
+        data_folder_FC = "E:\\...\\NCSMC\\"
         root_folder = "L" + str(j0)
         data_folder = os.path.join(data_folder_FC, root_folder)
         feature1 = get_networks(data_folder, total_Normal_SMC_IDs1)
