@@ -465,10 +465,8 @@ def train_test_multi_channle_sparse(feature1,graph1,graph2,graph3,y_data1,y1,tra
         print('**** Model of best val acc ****')
         test_acc_bva, pred_bva, lab_bva, score_pred_bva = test_model(model, model_wts_best_val_acc, fts, final_graph,lbls, test_ind, device)
         print("test_acc_bva: ", test_acc_bva)
-        if test_acc_lvl >= test_acc_bva:
-            return test_acc_lvl, pred_lvl, lab_lvl, score_pred_lvl
-        else:
-            return test_acc_bva, pred_bva, lab_bva, score_pred_bva
+        return test_acc_lvl, pred_lvl, lab_lvl, score_pred_lvl
+        #return test_acc_bva, pred_bva, lab_bva, score_pred_bva
 
 def _main():
 
