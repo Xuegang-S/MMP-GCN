@@ -102,7 +102,7 @@ class GCN_multi_channle(nn.Module):
         x = torch.cat((x1, x2, x3, x4, x5), dim=1)
         x = F.dropout(x, self.dropout, training=self.training)
         x = self.gc2(x, adj)
-        return F.log_softmax(x, dim=1)
+        return x
 def get_keys(d, value):
     return [k for k, v in d.items() if v == value]
 def get_ids(num_subjects=None, sub=''):
