@@ -512,7 +512,7 @@ def _main():
         for train_ind, test_ind in sfolder.split(np.zeros(len(y1)), y1):
             mn += 1
             print("--------------", mn, "------------")
-            xishu = 1.5
+            xishu = 1.0
             test_acc, pred, lab, score_pred = train_test_multi_channle_sparse(feature1,graph1,graph2,graph3,y_data1,y1,train_ind,test_ind,jk,xishu)
             test_acc_ave.append(test_acc)
             test_pred += pred
